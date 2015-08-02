@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="course-item-detail-wrapper">
+<div class="">
+		<a href="/category/{{course.category_id}}">
+		<span>&lt; back to </span>
+		<span>category: </span>
+		<span>{{category.name}}</span>
+		</a>
+</div>
+<div class="divider"></div>
+
+<section class="course-item-detail">
+	<h4>
+		<span>
+			<svg class="category-icon--small">
+				<use xlink:href="{{ url_for('static', filename='images/svg-defs.svg') }}#{{category.name}}-logo" ></use>
+			</svg>
+		</span>
+		{{course.name}}</h4>
+	<p class="course-item-detail__author">original contributor: {{course.creator.name}}</p>
+	<div>
+		<a class="course-item-detail__link" href="{{course.url}}" target="_blank">link</a>
+		{% if 'user_name' in session %}
+			<a class="btn-edit" href="#">edit</a>
+		{% endif %}
+	</div>
+	<br>
+	<p class="flow-text">{{course.description}}</p>
+</section>
+
+{% if 'user_name' in session %}
+<section class="course-item-edit">
+	<h4>Edit {{course.name}}</h4>
+	<button class="btn-edit-close btn-floating waves-effect waves-light">x</button>
+	<form class="" action="/category/{{course.category_id}}/{{course.id}}/edit/" method="POST">
+		{{ form.hidden_tag() }}
+		{{ form.name.label }}: {{ form.name() }}
+		{{ form.url.label }}: {{ form.url() }}
+		{{ form.description.label }}: {{ form.description() }}
+  		<button class="btn waves-effect waves-light" type="submit">Submit</button>
+  		<div class="delete-option-wrapper"><a href="/category/{{course.category_id}}/{{course.id}}/delete/" class="btn btn-delete-confirm">sure?</a><a href="#" class="btn btn-delete">delete</a><div>
+	</form>
+</section>
+{% endif %}
+
+</div>
+{% endblock %}

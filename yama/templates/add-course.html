@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="">
+	<div class="">
+		<a href="/category/{{category.id}}">
+		<span>&lt; back to </span>
+		<span>category: </span>
+		<span>{{category.name}}</span>
+		</a>
+	</div>
+	<h4>Add a course for {{category.name}}</h4>
+	
+	<form action="/category/{{category.id}}/add/" method="post">
+    	{{ form.hidden_tag() }}
+		{{ form.name.label }}: {{ form.name(placeholder="Name of the course (ex. Udacity Coding 101)") }}
+		{{ form.url.label }}: {{ form.url(placeholder="https://www.javascript.com") }}
+		{{ form.description.label }}: {{ form.description(placeholder="Description of the course") }}
+  		<button class="btn waves-effect waves-light" type="submit">Submit</button>
+	</form>
+
+</section>
+
+{% endblock %}

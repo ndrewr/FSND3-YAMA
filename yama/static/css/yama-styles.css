@@ -1,0 +1,404 @@
+/*
+  Project 3 Catalog app: master style sheet
+*/
+html, body {
+  min-height: 100%;
+}
+html {
+  position: relative;
+}
+body {
+  margin-bottom: 140px;
+  background-image: url('../images/light-wool.png');
+
+}
+
+section, div, header, footer {
+  background-image: url('../images/light-wool.png');
+
+}
+
+header, div, footer {
+  position: relative;
+  overflow: auto;
+
+}
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  margin-top: 20px;
+}
+
+.footer-github-link {
+  height: 60px;
+  width: 150px;
+  vertical-align: bottom;
+}
+
+.footer-signature {
+  position: absolute;
+  color: #eaeaea;
+  font-size: .8em;
+  left: 0;
+  bottom: 0;
+}
+
+a {
+  /*color: #fff;*/
+  color: #000;
+}
+
+.text-outline {
+  color: #000;
+  text-shadow:
+    1px 1px 0 #eaeaea,
+    /* Simulated effect for Firefox and Opera
+       and nice enhancement for WebKit */
+   -1px -1px 0 #eaeaea,
+    1px -1px 0 #eaeaea,
+   -1px  1px 0 #eaeaea,
+    1px  1px 0 #eaeaea;
+}
+
+.brand-outline {
+  color: #000;
+  /*#32AB9F*/
+  text-shadow:
+    3px -3px 0 #eaeaea,
+    /* Simulated effect for Firefox and Opera
+       and nice enhancement for WebKit */
+   -1px -1px 0 #eaeaea,
+    1px -1px 0 #eaeaea,
+   -1px  1px 0 #eaeaea,
+    1px  1px 0 #eaeaea;
+}
+
+.header-login {
+  right: 0;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+  color: #222;
+}
+.header-login__greeting {
+  margin-bottom: 0;
+}
+
+.brand {
+}
+.brand:hover {
+  color: #fff;
+}
+.brand h1 {
+  font-size: 5em;
+  margin-top: 1.1rem;
+  margin-bottom: -.7rem;
+  letter-spacing: 3px;
+}
+.brand-sub-msg {
+  font-size: 1.06em;
+  opacity: .1;
+}
+
+.brand-sub-msg:hover {
+  opacity: 1;
+}
+
+.main-content {
+  /*max-height: 300px;*/
+  overflow: hidden;
+  position: relative;
+
+}
+
+section {
+  box-sizing: border-box;
+  padding: 1em;
+  display: inline-block;
+
+  max-height: 90%;
+  vertical-align: text-top;
+
+  overflow-y: scroll;
+
+  position: relative;
+}
+
+/*@-webkit-keyframes riseUp {
+  border: 1px solid #ccc;
+  box-shadow: 5px 3px 9px 1px #ccc;
+}
+@keyframes riseUp {
+  border: 1px solid #ccc;
+  box-shadow: 5px 3px 9px 1px #ccc;
+}*/
+.category-container {
+  width: 42%;
+
+    transition: all 0.5s linear;
+/*
+  animation:  riseUp 1s ease-in-out 3s 3 forwards;
+  -webkit-animation:  riseUp 1s ease-in-out 0s 1 forwards;*/
+  position: relative;
+  z-index: 200;
+  background-color: #fff;
+}
+.rise {
+  border: 1px solid #ccc;
+  box-shadow: 5px 3px 9px 1px #ccc;
+/*	background-color: #eff;*/
+  background-color: #fefefe;
+}
+
+.category-list__item__link,
+.course-list__item__link {
+  color: #000;
+}
+
+.recent-posts-container,
+.course-container {
+  padding-top: 0;
+}
+
+.course-container {
+  width: 48%;
+  position: absolute;
+  z-index: 100;
+
+  background-color: #f7f7f7;
+  background-image: url('../images/subtle-noise.png');
+  transition: all .8s ease-out .8s;
+}
+
+.btn-edit-close,
+.btn-close,
+.btn-login-modal-close {
+  position: absolute;
+  /*height: auto;
+  width: auto;*/
+  right: 5px;
+  top: 5px;
+
+}
+
+.btn-add-course {
+  /*padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  color: #000;*/
+}
+
+.btn-edit,
+.course-item-detail__link {
+  display: inline-block;
+  text-align: center;
+  width: 3em;
+  color: #000;
+  padding: 3px;
+  border: 1px solid #26A69A;
+  border-radius: 5px;
+  margin: 0 1em;
+}
+.btn-edit:hover,
+.course-item-detail__link:hover {
+  color: #fff;
+  background-color: #26A69A;
+}
+
+/* wrapper to allow proper offset of child sections when flash msg shows */
+.course-item-detail-wrapper {
+  position: relative;
+}
+
+.course-item-detail {
+  background: #fff;
+  z-index: 200;
+  transition: opacity .6s linear;
+  min-height: 420px;
+}
+
+.course-item-edit {
+  width: 90%;
+  max-width: 720px;
+  border: 2px dotted #BCAAA4;
+  border-radius: 5px;
+  padding: 1em 2em;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity .6s linear;
+}
+
+.phase-out {
+  z-index: 0;
+  opacity: 0;
+}
+
+.phase-in {
+  z-index: 200;
+  opacity: 1;
+}
+
+.recent-posts-container {
+
+  width: 48%;
+  left: 55%;
+  transition: all .8s ease-out .5s;
+
+}
+
+.obscure {
+  color: #777;
+  background-color: #ddd;
+  opacity: .4;
+  pointer-events: none;
+}
+
+.list-container {
+    vertical-align: text-top;
+
+  width: 98%;
+  /*padding: 0;*/
+  position: absolute;
+
+  z-index: 100;
+  /*margin-right: 200px;*/
+  left: -8%;
+  transition: all .8s ease-out 1s;
+}
+
+.slide-in {
+  /*display: inline-block;*/
+  /*margin-right: 0;*/
+  /*width: 60%;*/
+  /*padding: 1em;*/
+  left: 42%;
+}
+
+.flash-msg {
+  text-align: right;
+  color: #333;
+}
+
+.delete-option-wrapper{
+  /*display: inline;*/
+  position: relative;
+  float: right;
+}
+.btn-delete {
+  color: #fff;
+  background-color: #000;
+  /*z-index: 100;*/
+  border-radius: 5px;
+
+}
+.btn-delete-confirm {
+  display: none;
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  background-color: red;
+  width: 115px;
+  z-index: 0;
+  transition: all .5s ease-out;
+}
+.btn-slide-out {
+  display: inline;
+  opacity: 1;
+}
+
+.login-modal-container {
+  position: absolute;
+  display: none;
+  padding: 2em;
+  background-color: #eff;
+  opacity: 0;
+  border: 1px solid #BCAAA4;
+  border-radius: 5px;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity .6s linear;
+}
+
+.fadeIn {
+  display: inherit;
+  opacity: .95;
+  z-index: 300;
+  width: 300px;
+  height: 340px;
+}
+
+.btn-logout,
+.btn-login {
+  transition: all .2s ease-in-out;
+}
+.btn-logout:hover,
+.btn-login:hover {
+  color: #fff;
+  font-size: 1.4em;
+}
+
+.category-list__item__title {
+  vertical-align: text-bottom;
+  font-size: 2em;
+}
+.category-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  margin-right: 1em;
+}
+.category-icon--small {
+  width: 50px;
+  height: 50px;
+}
+.login-modal__icon-container {
+  display: block;
+  text-align: center;
+  border-radius: 5em;
+  border: 2px dotted #BCAAA4;
+  margin-top: 40px;
+  transition: all .2s ease-in-out;
+}
+.login-modal__icon-container:hover {
+  border: 1px solid #BCAAA4;
+}
+.login-icon {
+  width: 120px;
+  height: 120px;
+}
+.btn-github-login {
+  text-align: center;
+  font-size: 1.4em;
+  font-weight: 700;
+  margin-top: 0;
+}
+
+.texture-background {
+  /* texture from transparenttextures.com */
+  background-color: #f7f7f7;
+  background-image: url('../images/subtle-noise.png');
+}
+
+.container-404 {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+.btn-404-back {
+  transition: all .2s ease-in;
+  text-decoration: underline;
+}
+
+.btn-404-back:hover {
+  font-size: 4em;
+  text-decoration: none;
+  color: #32AB9F;
+}

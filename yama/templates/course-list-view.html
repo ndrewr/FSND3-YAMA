@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- <div class="section"> -->
+	<h4>Choose a course category</h4>
+		
+	<div class="divider"></div>
+
+	<section class="category-container rise">
+		<h2>Skills.</h2>
+		{% if categories !=[] %}	
+		<div>
+			<ul class="category-list">
+				{% for category in categories %}
+					<li class="category-list__item {% if category.id == current_category.id %}texture-background{% endif %}" data-category-id="{{category.id}}">
+						<a class="category-list__item__link" href="#">
+							<div>
+								<svg class="category-icon">
+									<use xlink:href="{{ url_for('static', filename='images/svg-defs.svg') }}#{{category.name}}-logo" ></use>
+								</svg>
+								<span class="category-list__item__title"><strong>{{category.name}}</strong></span>
+							</div>
+							<p>{{category.description}}</p>
+						</a>
+					</li>
+					<div class="divider"></div>
+					<br>
+				{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+	</section>
+
+	<section class="list-container slide-in">
+	{% include "course-list.html" %}
+
+	<section class="recent-posts-container obscure">
+		<h2>New.</h2>
+		{% if recent_posts !=[] %}	
+		<div>
+			<ul class="">
+				{% for course in recent_posts %}
+					<li class="course-list-item">
+						<a href="/details/{{course.id}}">
+							<span><strong>{{course.name}}</strong></span>
+							<p>
+								{{
+									(course.description[0:40] if course.description|length > 39 else course.description[0:]) + '...'
+								}}
+							</p>
+						</a>
+					</li>
+					<div class="divider"></div>
+					<br>
+				{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+
+	</section>
+	</section>
+
+<!-- </div> -->
+
+{% endblock %}
