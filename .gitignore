@@ -8,6 +8,7 @@
 *.pydevproject
 *.kpf
 venv
+.env
 
 # Flask Instance folder
 /instance
@@ -70,3 +71,5 @@ docs/_build/
 
 # PyBuilder
 target/
+
+*.sqlite3

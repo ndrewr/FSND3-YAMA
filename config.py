@@ -1,2 +1,13 @@
+# common config options
+# sensitive keys stored via heroku env vars
+import os
+
 DEBUG = False
-SECRET_KEY = 'super_secret_key'
+CSRF_ENABLED = True
+SECRET_KEY = os.environ['SECRET_KEY']
+
+SQLALCHEMY_DATABASE_URI = 'sqlite:///coursecatalog.db'
+
+#SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+GITHUB_CLIENT_ID = os.environ['GITHUB_CLIENT_ID']
+GITHUB_CLIENT_SECRET = os.environ['GITHUB_CLIENT_SECRET']
