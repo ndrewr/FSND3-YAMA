@@ -30,6 +30,9 @@ INSTRUCTIONS TO RUN:
 Vagrant is not required to run the project. Project dependencies are listed under requirements.txt
 Pip is used in the example below.
 
+Optional but recommended: setup a virtual environment for running the project. More details:
+http://docs.python-guide.org/en/latest/dev/virtualenvs/
+
 First ensure the following python modules are already installed:
 ```
 pip install -r requirements.txt
