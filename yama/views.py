@@ -223,9 +223,11 @@ def deleteCourse(category_id, course_id):
         flash('Hey, ya gotta log in first.')
         return redirect('/')
     course = Item.query.filter_by(id=course_id).one()
+    course_name = course.name
     db.session.delete(course)
     # count = Item.query.count()
     db.session.commit()
+    flash('* Course item %s is gone. Poof.' % (course_name))
     return redirect(url_for('showCourses', category_id=category_id))
 
 
