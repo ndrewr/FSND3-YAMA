@@ -33,17 +33,24 @@ Pip is used in the example below.
 Optional but recommended: setup a virtual environment for running the project. More details:
 http://docs.python-guide.org/en/latest/dev/virtualenvs/
 
-First ensure the following python modules are already installed:
+Ensure the following python modules are already installed:
 ```
 pip install -r requirements.txt
 ```
 
-Next to run on localhost:5000 simply:
+Next to run on localhost:5100 (yes, 5100) simply:
 ```
 python run.py
 ```
 
-The above file will initialize a sample course database and start the app running locally on port 5000.
+The above file will initialize a sample course database and start the app running locally on port 5100.
 The test server uses Flask's built-in web server.
 
 Users can view any course details but must login with Github credentials to access Create, Update and Delete privileges.
+
+
+DEVELOPMENT NOTES:
+-----------------------------------------------------
+The project uses the Flask microframework and several key extensions to aid development. Data is stored in local test environment using SQLite but on deployment to Heroku PostgreSQL was used.
+
+The Flask webserver is used to test locally but on deployment Gunicorn was used.
