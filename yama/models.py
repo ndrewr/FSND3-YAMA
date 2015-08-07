@@ -25,7 +25,7 @@ class User(db.Model):
 class Category(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Integer, unique=True, nullable=False)
+    name = db.Column(db.String(250), unique=True, nullable=False)
     description = db.Column(db.String(250))
     courses = db.relationship("Item", backref='category', lazy='dynamic')
 
