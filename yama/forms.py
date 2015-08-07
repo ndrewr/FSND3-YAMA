@@ -8,6 +8,6 @@ from models import User, Category, Item
 
 
 class TitleDescriptionForm(Form):
-  name = StringField('name', validators=[validators.Required(), validators.Length(min=2, max=52)])
+  name = StringField('name', validators=[validators.Required(), validators.Length(min=2, max=100)])
   description = TextAreaField('description', validators=[validators.Length(max=300)], default='A new course.')
-  url = StringField('url', validators=[validators.Required(), validators.URL()])
+  url = StringField('url', validators=[validators.Required(), validators.URL()], validators.Length(max=120))

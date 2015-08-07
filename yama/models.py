@@ -46,8 +46,8 @@ class Category(db.Model):
 class Item(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), nullable=False)
-    url = db.Column(db.String(80), nullable=False)
+    name = db.Column(db.String(100), nullable=False)
+    url = db.Column(db.String(120), nullable=False)
     description = db.Column(db.String(320))
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     # category = db.relationship('Category', backref='courses', lazy='dynamic')
