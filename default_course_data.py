@@ -84,6 +84,17 @@ def loadDB():
                              category_id=1,
                              user_id=1))
 
+  courses.append(models.Item(name="How I TRAINed to Learn Rails",
+                             url="https://medium.com/how-i-learned-ruby-rails/how-i-trained-to-learn-rails-e08c94e2a51e",
+                             description="A blogger reflects on the methods and resources he used to grok Rails development.",
+                             category_id=3,
+                             user_id=1))
+
+  courses.append(models.Item(name="Rails Guides",
+                             url="http://guides.rubyonrails.org",
+                             description="These are the new guides for Rails 4.2 based on v4.2.3. These guides are designed to make you immediately productive with Rails, and to help you understand how all of the pieces fit together.",
+                             category_id=3,
+                             user_id=1))
 
 
   # db.session.add_all([course1, course2, course3, course4, course5, course6, course7])
