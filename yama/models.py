@@ -48,7 +48,7 @@ class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
     url = db.Column(db.String(80), nullable=False)
-    description = db.Column(db.String(250))
+    description = db.Column(db.String(320))
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     # category = db.relationship('Category', backref='courses', lazy='dynamic')
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
