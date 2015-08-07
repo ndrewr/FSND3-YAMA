@@ -149,7 +149,7 @@ def addCourse(category_id):
     if 'user_name' not in login_session:
         flash('Hey, ya gotta log in first.')
         return redirect('/')
-    # submitted course is displayed both in Course list AND Recent Posts list
+    # submitted course displayed both in Course list AND Recent Posts
     category = Category.query.filter_by(id=category_id).one()
     form = TitleDescriptionForm()
     if form.validate_on_submit():
