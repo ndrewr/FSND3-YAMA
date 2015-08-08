@@ -11,7 +11,8 @@ venv
 .env
 
 # Flask Instance folder
-/instance
+# ordinarily keep out of git; allow now for grading
+# /instance
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
