@@ -11,6 +11,14 @@ YAMA is an application built with Flask on the backend, SQLAlchemy-ORM assisted 
 
 The app integrates User account registration, 3rd party account authentication via Github. Users can select a course category and a list of resources with descriptions and links. A logged-in user can additionally add, edit and delete these course items.  New posts will be tagged with the creator's account name.
 
+To view catalog data in json format enter below url where 'catalog_id_num' is an int (current 1-3 range).
+
+/catalog/catalog_id_num/json
+
+To view singl course data in json format enter below url where 'catalog_id_num' (current 1-3 range) and 'course_id' are integers
+
+/catalog/catalog_id_num/course_id/json
+
 The live app demo is on Heroku here:
 http://yama-go.herokuapp.com
 
@@ -68,3 +76,10 @@ The project uses the Flask microframework and several key extensions to aid deve
 The Flask webserver is used to test locally but on deployment Gunicorn was used for better concurrent connection handling.
 
 Flask configuration was a minor issue but to allow graders to run the app locally, private key information was included in the repo temporarily.
+
+
+SUGGESTIONS:
+-----------------------------------------------------
+* allow only post creator to delete posts
+* implement xml data endpoints
+* CASCADE deletes (currently unneeded since no dependcy btwn db models...would change if Catalogs or Users could be deleted)

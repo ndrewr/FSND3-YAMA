@@ -4,12 +4,24 @@
 from flask import Flask, render_template, request, redirect, jsonify, url_for
 from flask import flash, make_response, session as login_session
 from yama import app, db, github
+from functools import wraps
 
 import json, random, string
 import requests
 
 from models import User, Category, Item
 from forms import TitleDescriptionForm
+
+
+# login required route decorator
+def login_required(f):
+  @wraps(f)
+  def login_check(*args, **kwargs):
+    if 'user_name' not in login_session:
+      flash('Hey, ya gotta log in first!')
+      return redirect('/')
+    return f(*args, **kwargs)
+  return login_check
 
 
 # home page aka base camp. Shows course categories AND a list of most recent added courses
@@ -134,21 +146,10 @@ def showCourses(category_id):
                             recent_posts=recent, state=getState())
 
 
-# returns course list data in json
-@app.route('/category/<int:category_id>/json')
-@app.route('/category/<int:category_id>/list/json')
-def showCoursesJSON(category_id):
-    courses = Item.query.filter_by(category_id=category_id).all()
-    return jsonify(CategoryCourses=[course.serialize for course in courses])
-
-
 # show an interface to Add a course to current subject
 @app.route('/category/<int:category_id>/add/', methods=['GET', 'POST'])
+@login_required
 def addCourse(category_id):
-    # check if user is logged in
-    if 'user_name' not in login_session:
-        flash('Hey, ya gotta log in first.')
-        return redirect('/')
     # submitted course displayed both in Course list AND Recent Posts
     category = Category.query.filter_by(id=category_id).one()
     form = TitleDescriptionForm()
@@ -192,11 +193,8 @@ def showCourse(category_id=1, course_id=1):
 # also has a link to delete this course from the category's course list
 # NOTE using Flask-WTF forms module
 @app.route('/category/<int:category_id>/<int:course_id>/edit/', methods=['GET', 'POST'])
+@login_required
 def editCourse(category_id, course_id):
-    # check if user is logged in
-    if 'user_name' not in login_session:
-        flash('Hey, ya gotta log in first.')
-        return redirect('/')
     category = Category.query.filter_by(id=category_id).one()
     course = Item.query.filter_by(id=course_id).one()
     form = TitleDescriptionForm()
@@ -217,11 +215,12 @@ def editCourse(category_id, course_id):
 
 # shows a confirmation view if user clicks 'delete'
 @app.route('/category/<int:category_id>/<int:course_id>/delete/')
+@login_required
 def deleteCourse(category_id, course_id):
     # check if user is logged in
-    if 'user_name' not in login_session:
-        flash('Hey, ya gotta log in first.')
-        return redirect('/')
+#    if 'user_name' not in login_session:
+#        flash('Hey, ya gotta log in first.')
+#        return redirect('/')
     course = Item.query.filter_by(id=course_id).one()
     course_name = course.name
     db.session.delete(course)
@@ -231,14 +230,22 @@ def deleteCourse(category_id, course_id):
     return redirect(url_for('showCourses', category_id=category_id))
 
 
+# returns course list data in json
+@app.route('/category/<int:category_id>/json')
+@app.route('/category/<int:category_id>/list/json')
+def showCoursesJSON(category_id):
+    courses = Item.query.filter_by(category_id=category_id).all()
+    return jsonify(CategoryCourses=[course.serialize for course in courses])
+
+
 # api endpoint to return details for a specific course in JSON format
-@app.route('/category/<int:category_id>/<int:course_id>/JSON/')
-def apiCourseJSON(course_id):
-    return 'This will return all details for a specific course in JSON.'
+@app.route('/category/<int:category_id>/<int:course_id>/json/')
+def showCourseJSON(category_id, course_id):
+  course = Item.query.filter_by(id=course_id).one()
+  return jsonify(CourseInfo=[course.serialize])
 
 
 # catches 404 errors
 @app.errorhandler(404)
 def page_not_found(e):
   return render_template('404.html')
-

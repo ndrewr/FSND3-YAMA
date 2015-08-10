@@ -4,7 +4,6 @@ from flask.ext.github import GitHub
 import os
 
 
-#app = Flask(__name__)
 app = Flask(__name__, instance_relative_config=True)
 
 if os.environ.get('HEROKU_DEPLOY') is None:
