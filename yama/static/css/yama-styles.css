@@ -1,5 +1,10 @@
 /*
-  Project 3 Catalog app: master style sheet
+file: yama-styles.css
+author: Andrew Roy Chen
+project: Udacity FSND P3 YAMA
+description:
+  Project 3 Catalog app master style sheet;
+  Other styles inherited from Materialize.css library
 */
 html, body {
   min-height: 100%;

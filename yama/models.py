@@ -1,8 +1,13 @@
 """
+  file: models.py
+  author: Andrew Roy Chen
+  project: Udacity FSND P3 YAMA
+  description:
     defines model classes.
     - User refers to a registered User
-    - CourseCategory refers to a specific course subject
-    - CourseItem refers to an individual course offering in a registered Category
+    - Category refers to a specific course subject
+    - Item refers to an individual course offering in a registered Category
+    Models have helper functions for JSON data serialization
 """
 
 from . import db

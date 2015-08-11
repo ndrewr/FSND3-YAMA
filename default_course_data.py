@@ -1,4 +1,8 @@
 """
+file: default_course_data.py
+author: Andrew Roy Chen
+project: Udacity FSND Project 3 YAMA
+description:
 initial data for the course database. Future iteration
 can add data at an external link or data object
 """

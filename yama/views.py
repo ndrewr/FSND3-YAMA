@@ -1,5 +1,9 @@
 """
-    defines the app routes
+  file: views.py
+  author: Andrew Roy Chen
+  project: Udacity FSND P3 YAMA
+  description:
+    application url route handlers and their associated helpers
 """
 from flask import Flask, render_template, request, redirect, jsonify, url_for
 from flask import flash, make_response, session as login_session

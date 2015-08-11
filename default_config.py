@@ -1,5 +1,12 @@
-# common config options
-# sensitive keys stored via heroku env vars
+"""
+  file: default_config.py
+  author: Andrew Roy Chen
+  project: Udacity FSND P3 YAMA
+  description:
+    main config options with precedence in non-dev environment
+    sensitive keys stored via heroku env vars
+"""
+
 import os
 
 DEBUG = False
